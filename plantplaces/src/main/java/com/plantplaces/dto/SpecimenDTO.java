@@ -3,10 +3,17 @@ package com.plantplaces.dto;
 public class SpecimenDTO 
 {
 	private int specimenId;
-	private String latitute;
+	private String latitude;
 	private String longitude;
 	private String description;
+	private int plantId;
 	
+	public int getPlantId() {
+		return plantId;
+	}
+	public void setPlantId(int plantId) {
+		this.plantId = plantId;
+	}
 	public String getDescription() {
 		return description;
 	}
@@ -19,11 +26,11 @@ public class SpecimenDTO
 	public void setSpecimenId(int specimenId) {
 		this.specimenId = specimenId;
 	}
-	public String getLatitute() {
-		return latitute;
+	public String getLatitude() {
+		return latitude;
 	}
-	public void setLatitute(String latitute) {
-		this.latitute = latitute;
+	public void setLatitute(String latitude) {
+		this.latitude = latitude;
 	}
 	public String getLongitude() {
 		return longitude;
@@ -35,7 +42,18 @@ public class SpecimenDTO
 	@Override
 	public String toString() {
 		
-		return specimenId + " " + latitute + " " + longitude + " " + description;
+		return specimenId + " " + latitude + " " + longitude + " " + description;
+	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		// assume they don't match.
+		boolean returnValue = false;
+		if (obj instanceof SpecimenDTO) {
+			SpecimenDTO incomingSpecimen = (SpecimenDTO) obj;
+			returnValue = incomingSpecimen.getSpecimenId() == getSpecimenId();
+		}
+		return returnValue;
 	}
 
 }
